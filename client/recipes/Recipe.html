@@ -1,0 +1,28 @@
+<template name="Recipe">
+  <article class="recipe {{#if inMenu}}in-menu{{/if}}">
+    <h3>{{name}}</h3>
+
+    {{#if editMode}}
+    {{> quickForm collection="Recipes" id=updateRecipeId type="update" doc=this autosave=true}}
+    {{else}}
+    <p>{{desc}}</p>
+    <p>
+      {{#each ingredients}}
+      <span class="ingredient">{{name}} - {{amount}}</span>
+      {{/each}}
+    </p>
+    {{#if inMenu}}
+    <button class="btn-deny toggle-menu">Quitar de Menú</button>
+    {{else}}
+    <button class="btn-primary toggle-menu">Agregar a Menú</button>
+    {{/if}}
+    {{/if}}
+    <a href="/recipe/{{_id}}">Ver Más</a>
+    <i class="fa fa-pencil"></i>
+    <i class="fa fa-trash"></i>
+
+
+
+
+  </article>
+</template>
